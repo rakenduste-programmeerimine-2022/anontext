@@ -4,14 +4,12 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import * as React from 'react';
 
-export default function Registrationpage() {
+export default function Login() {
     return (
-        <Container component="main" maxWidth="xs">
             <Box
             sx={{
             mx: 0,
             marginRight: 0,
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -32,19 +30,6 @@ export default function Registrationpage() {
                 >
                 </TextField>
             </Typography>
-            <Typography component="h1">
-                Email Address:
-                <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                >
-                </TextField>
-            </Typography>
             <Typography component="h1" sx={{ mt: 0 }}>
                 Password:
                 <TextField
@@ -58,10 +43,12 @@ export default function Registrationpage() {
                 >
                 </TextField>
             </Typography>
+            <Link href="/Registration">
+                No account? Click here to register
+            </Link>
             <Button variant='contained' sx={{ mt: 2 }}>
-              Create Account
+              Login
             </Button>
             </Box>
-        </Container>
     )
 }

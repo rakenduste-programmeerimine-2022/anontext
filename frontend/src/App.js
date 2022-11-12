@@ -2,7 +2,6 @@ import './App.css';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
-import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import NoPage from "./pages/Nopage";
 
@@ -12,7 +11,6 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/Login" element={<Login />} />
         <Route path="/Registration" element={<Registration />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
