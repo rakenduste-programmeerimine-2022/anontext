@@ -5,13 +5,10 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import { Box } from '@mui/system';
-import { Hidden } from '@mui/material';
+import { Hidden, Typography } from '@mui/material';
 import Login from '../components/Login';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
-import TextEditor from '../components/TextEditor.js';
-import { createEditor } from 'slate'
-import { Slate, Editable, withReact } from 'slate-react'
 
 const SearchBar = ({setSearchQuery}) => (
   <form>
@@ -35,6 +32,7 @@ const SearchBar = ({setSearchQuery}) => (
 
 export default function Mainpage() {
   const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <Box
     sx={{
@@ -47,20 +45,18 @@ export default function Mainpage() {
           alignItems: 'center',
           justifyContent: "center",
           flexDirection: "row",
-          padding: 15,
+          marginTop: 0,
         }}
       >
         <div
           style={{
             width: "50%",
-            backgroundColor: "white",
+            padding: 20, // Search-bar värv on vaja muuta!!!!!
           }}
         >
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
-        <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>
-        <Login></Login>
-        </Popup>
+        <Typography>PlaceholderProfile</Typography>
       </div>
       <div
         style={{
@@ -79,11 +75,10 @@ export default function Mainpage() {
       <Box
         sx={{
           backgroundColor: 'darkgray', // Värvid WIP
-         /* display: "flex", */
+          display: "flex",
           justifyContent: "center",
         }}
       >
-      <TextEditor></TextEditor>
         <TextField multiline
         sx={{
           backgroundColor: "gray",
