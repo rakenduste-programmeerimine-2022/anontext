@@ -36,10 +36,7 @@ const SearchBar = ({setSearchQuery}) => (
 export default function Mainpage() {
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <Box
-    sx={{
-      backgroundColor: '#002D51',
-      }}
+    <body style={{backgroundColor: '#002D51', height: '2000px',  }}
     >
       <div
         style={{
@@ -71,29 +68,8 @@ export default function Mainpage() {
           padding: 20
         }}
       >
-        <Button sx={{width: 150, height: 75, left: "15%", backgroundColor: 'lightgray'}}>Placeholder</Button>
-        <Button sx={{width: 150, height: 75, left: "25%", backgroundColor: 'lightgray'}}>Placeholder</Button>
-        <Button sx={{width: 150, height: 75, left: "35%", backgroundColor: 'lightgray'}}>Placeholder</Button>
-        <Button sx={{width: 150, height: 75, left: "45%", backgroundColor: 'lightgray'}}>Placeholder</Button>
       </div>
-      <Box
-        sx={{
-          backgroundColor: 'darkgray', // Värvid WIP
-         /* display: "flex", */
-          justifyContent: "center",
-        }}
-      >
-      <TextEditor></TextEditor>
-        <TextField multiline
-        sx={{
-          backgroundColor: "gray",
-          width: "75%",
-          height: 650,
-        }}
-        >
-
-        </TextField>
-      </Box>
-    </Box>
+      <TextEditor ></TextEditor>
+    </body>
   );
 }
