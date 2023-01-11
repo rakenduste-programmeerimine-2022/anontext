@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "slate": "^0.88.1",
+    "slate-react": "^0.88.0"
+  }
+}
