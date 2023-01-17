@@ -1,17 +1,14 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
-import { Box } from '@mui/system';
-import { Hidden } from '@mui/material';
-import Login from '../components/Login';
+import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import TextEditor from '../components/TextEditor.js';
-import { createEditor } from 'slate'
-import { Slate, Editable, withReact } from 'slate-react'
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import Settings from '../components/Settings.js';
+import { IconButton } from '@mui/material';
 
 const SearchBar = ({setSearchQuery}) => (
   <form>
@@ -36,40 +33,60 @@ const SearchBar = ({setSearchQuery}) => (
 export default function Mainpage() {
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <body style={{backgroundColor: '#002D51', height: '2000px',  }}
+    <body style={{backgroundColor: '#002D51', height: '1000px',  }}
     >
       <div
         style={{
           display: "flex",
+          position: "relative",
           alignItems: 'center',
           justifyContent: "center",
           flexDirection: "row",
-          padding: 15,
+          padding: 25,
         }}
       >
         <div
           style={{
             width: "50%",
             backgroundColor: "white",
+            position: "relative",
           }}
         >
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         </div>
+        <div
+          style={{
+            display: "flex",
+            position: "relative",
+          }}
+        >
         <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>
-        <Login></Login>
+          <Login></Login>
         </Popup>
+          <div
+            style={{
+              display: "flex",
+              position: "relative",
+              left: "100px" // Pole täiesti rahul aga las olla nii praegu
+            }}
+          > 
+          <Popup trigger={<Button style={{color: "darkgray",}} endIcon={<SettingsSuggestIcon />}>Settings</Button>} modal nested>
+            <Settings></Settings>
+          </Popup>
+          </div>
+        </div>
       </div>
       <div
         style={{
           display: "flex",
           alignItems: 'center',
           justifyContent: "left",
-          flexDirection: "row", // Siin on vaja paremat flex lahendust kui lihtsalt left!!!!!!
-          padding: 20
-        }}
+          flexDirection: "row",
+          padding: 10,
+      }} 
       >
-      </div>
       <TextEditor ></TextEditor>
+      </div>
     </body>
   );
 }

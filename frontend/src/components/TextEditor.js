@@ -168,9 +168,10 @@ export default function TextEditor() {
               >
               <LooksOneIcon></LooksOneIcon>
               </IconButton>
+              
               <select
                 value={language}
-                style={{ float: 'right' }}
+                style={{ float: 'right', position: 'relative' ,right: '00px' }}
                 onChange={e => setLanguage(e.target.value)}
               >
                 <option value="js">JavaScript</option>
@@ -183,27 +184,13 @@ export default function TextEditor() {
               </select>
             </div>
               <Editable
+              style={{
+                marginTop: '10px',
+                maxHeight: '675px',
+                overflow: "auto"
+              }}
                 decorate={decorate}
                 renderLeaf={renderLeaf}
-                onKeyDown={event => {
-                  if (!event.ctrlKey) {
-                    return
-                  }
-        
-                  switch (event.key) {
-                    case 'c': {
-                      event.preventDefault()
-                      CustomEditor.toggleCodeBlock(editor)
-                      break
-                    }
-        
-                    case 'b': {
-                      event.preventDefault()
-                      CustomEditor.toggleBoldMark(editor)
-                      break
-                    }
-                  }
-                }}
               />
             </div>
         </Slate>
