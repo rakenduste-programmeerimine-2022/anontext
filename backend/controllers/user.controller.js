@@ -1,21 +1,32 @@
-const mongoose = require("mongoose")
+const User = require("../models/user.model");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-	username: String,
-	email: String,
-	password: String,
-})
+exports.register = async (req, res) => {
+	const {username, email, password} = req.body
 
-const User = mongoose.model("User", userSchema)
+	//Kui kasutajanimi v email on juba andmebaasis olemas, siis nah
+	if (await User.findOne({email}) || await User.findOne({username})) {
+		return res.status(401).json({message: "Username or email already taken!"})
+	}
 
-//Uue kasutaja loomine
-//Väga algeline, peab kindlaks tegema, et kõik info on korrektne ja et sama kasutajanimega kasutajaid ei ole juba olemas ect...
-//Samuti parooli hashimine
-exports.create = async(req, res) => {
+	console.log(username, email, password)
 
-	const newUser = await User.create({
-		username: req.params.username,
-		email: req.params.email,
-		password: req.params.password,
+	//Kui pole saadetud mingeid vajalikke andmeid, hetkel ei t66ta
+	if(!username || !email || !password) {
+		res.send(401)
+	}
+
+	const hashedPassword = bcrypt.hashSync(password, 10);
+
+	const newUser = new User({
+		username,
+		email,
+		password: hashedPassword
 	})
+
+	newUser.save()
+		.then(() => res.json('User added!'))
+		.catch(err => res.status(400).json('Error: ' + err));
 }
