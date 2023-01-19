@@ -8,7 +8,7 @@ exports.register = async (req, res) => {
 
 	//Kui kasutajanimi v email on juba andmebaasis olemas, siis nah
 	if (await User.findOne({email}) || await User.findOne({username})) {
-		return res.status(401).json({message: "Username or email already taken!"})
+		return res.status(400).send({message: "Username or email already taken!"})
 	}
 
 	console.log(username, email, password)
@@ -30,4 +30,34 @@ exports.register = async (req, res) => {
 	newUser.save()
 		.then(() => res.json('User added!'))
 		.catch(err => res.sendStatus(400).json('Error: ' + err));
+}
+
+exports.login = async(req, res) => {
+	const {username, password} = req.body
+
+	const user = await User.findOne({username})
+
+	if (!user) {
+		res.status(400).send("Incorrect user or password")
+		return
+	}
+
+	const comparePasswords = await bcrypt.compare(password, user.password)
+	console.log(comparePasswords, user.password, password)
+	if (!comparePasswords) {
+		res.status(400).send("Incorrect user or password")
+		return
+	}
+
+	//k6ik good, saame sisse logida
+
+	const token = jwt.sign(
+		{user_id: user.__id,},
+		process.env.JWT_KEY,
+		{
+			expiresIn: "24h",
+		}
+	);
+
+	res.send(token);
 }
