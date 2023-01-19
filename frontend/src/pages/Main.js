@@ -6,6 +6,7 @@ import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import TextEditor from '../components/TextEditor.js';
+import BetterTextEditor from '../components/BetterTextEditor.js';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import Settings from '../components/SettingsGuest.js';
 import { IconButton } from '@mui/material';
@@ -87,7 +88,7 @@ export default function Mainpage() {
           padding: 10,
       }} 
       >
-      <TextEditor ></TextEditor>
+      <BetterTextEditor ></BetterTextEditor>
       </div>
     </body>
   );
