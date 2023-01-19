@@ -7,7 +7,7 @@ import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import SearchElement from '../components/SearchElement.js';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
-import Settings from '../components/Settings.js';
+import Settings from '../components/SettingsGuest.js';
 import { IconButton } from '@mui/material';
 
 const SearchBar = ({setSearchQuery}) => (
