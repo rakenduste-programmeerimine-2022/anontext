@@ -15,7 +15,8 @@ exports.register = async (req, res) => {
 
 	//Kui pole saadetud mingeid vajalikke andmeid, hetkel ei t66ta
 	if(!username || !email || !password) {
-		res.send(401)
+		res.send("Some fields were not filled in!")
+		return
 	}
 
 	const hashedPassword = bcrypt.hashSync(password, 10);
@@ -28,5 +29,5 @@ exports.register = async (req, res) => {
 
 	newUser.save()
 		.then(() => res.json('User added!'))
-		.catch(err => res.status(400).json('Error: ' + err));
+		.catch(err => res.sendStatus(400).json('Error: ' + err));
 }
