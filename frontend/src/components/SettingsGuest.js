@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import * as React from 'react';
 
-export default function Settings() {
+export default function SettingsGuest() {
     return (
             <Box
             sx={{
@@ -21,15 +21,10 @@ export default function Settings() {
                     <Button variant='contained' sx={{ mt: 0 }}>
                         Generate link
                     </Button>
-                    <TextField style={{backgroundColor: 'white', width: 300}}>
+                    <TextField inputProps={{readOnly: true,}} style={{backgroundColor: 'white', width: 300}}>
                         
                     </TextField>
                 </Typography>
-                <Box sx={{marginTop: 5}}>
-                    Siis kui registreeritud tuleb siia veel:
-                    <p></p>Mingi salvestuse nupp, private või public
-                    <p></p>Notes also go here lmao?
-                </Box>
             </Box>
     )
 }

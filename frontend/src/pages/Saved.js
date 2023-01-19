@@ -30,7 +30,7 @@ const SearchBar = ({setSearchQuery}) => (
     </form>
   );
 
-export default function Searchpage() {
+export default function Saved() {
     const [searchQuery, setSearchQuery] = useState("");
     return (
       <body style={{backgroundColor: '#002D51', height: '1000px',  }}

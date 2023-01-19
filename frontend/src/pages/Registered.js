@@ -7,8 +7,9 @@ import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import TextEditor from '../components/TextEditor.js';
 import EventNoteIcon from '@mui/icons-material/EventNote';
-import Settings from '../components/Settings.js';
+import Settings from '../components/SettingsGuest.js';
 import { IconButton } from '@mui/material';
+import SettingsRegistered from '../components/SettingsRegistered.js';
 
 document.body.style = 'background: #002D51;';
 
@@ -72,7 +73,7 @@ export default function Registered() {
             }}
           > 
           <Popup trigger={<Button variant='contained' color = "success" endIcon={<EventNoteIcon />}>Save note</Button>} modal nested>
-            <Settings></Settings>
+            <SettingsRegistered></SettingsRegistered>
           </Popup>
           </div>
         </div>

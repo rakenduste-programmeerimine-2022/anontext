@@ -7,7 +7,7 @@ import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import TextEditor from '../components/TextEditor.js';
 import EventNoteIcon from '@mui/icons-material/EventNote';
-import Settings from '../components/Settings.js';
+import Settings from '../components/SettingsGuest.js';
 import { IconButton } from '@mui/material';
 
 document.body.style = 'background: #002D51;';
