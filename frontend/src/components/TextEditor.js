@@ -10,6 +10,7 @@ import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import LooksOneIcon from '@mui/icons-material/LooksOne';
 import IconButton from '@mui/material/IconButton';
 import { css } from '@emotion/css';
+import { Button } from '@mui/material';
 
 // Kood nuppude toggle'i jaoks
 
@@ -168,6 +169,10 @@ export default function TextEditor() {
               >
               <LooksOneIcon></LooksOneIcon>
               </IconButton>
+
+			  <Button variant='contained'>
+				Submit
+			  </Button>
               
               <select
                 value={language}

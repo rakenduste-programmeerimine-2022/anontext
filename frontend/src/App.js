@@ -6,9 +6,7 @@ import Registration from "./pages/Registration";
 import NoPage from "./pages/Nopage";
 import Registered from "./pages/Registered";
 import Search from './pages/Search';
-import { createEditor } from 'slate'
-import { Slate, Editable, withReact } from 'slate-react'
-import { useState } from 'react';
+import Saved from './pages/Saved';
 
 
 export default function App() {
@@ -20,6 +18,7 @@ export default function App() {
         <Route path="*" element={<NoPage />} />
         <Route path="/Registered" element={<Registered />} />
         <Route path="/Search" element={<Search />} />
+        <Route path='/Saved' element={<Saved />} />
       </Routes>
     </BrowserRouter>
   );

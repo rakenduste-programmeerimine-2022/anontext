@@ -33,7 +33,9 @@ export default function SettingsRegistered() {
                 <Button variant='contained' style={{display: 'flex', position: 'relative', alignItems: 'center', marginTop: 15}}>
                         Save Note
                 </Button>
-                <p></p>Saved notes go here:
+                <Link style={{marginTop: 25}} href='Saved'>
+                Look at saved notes
+                </Link>
             </Box>
     )
 }
