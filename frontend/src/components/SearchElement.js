@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import * as React from 'react';
 
-export default function Login() {
+export default function SearchElement() {
     return (
             <Box
             sx={{

@@ -187,6 +187,7 @@ export default function TextEditor() {
               style={{
                 marginTop: '10px',
                 maxHeight: '675px',
+                
                 overflow: "auto"
               }}
                 decorate={decorate}
