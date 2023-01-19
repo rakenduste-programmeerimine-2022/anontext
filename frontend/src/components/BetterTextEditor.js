@@ -52,6 +52,8 @@ const TextEditor = () => {
 					backgroundColor: 'white',
 					margin: "auto",
 					width: "90em",
+					maxHeight: "675px",
+					overflow: "auto"
 				}}
 			>
 			</Editor>
