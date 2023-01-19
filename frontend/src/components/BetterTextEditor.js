@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Editor from 'react-simple-code-editor';
 import Prism, { highlight, languages } from 'prismjs/components/prism-core';
+import { Button } from '@mui/material';
+
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-java';
@@ -20,7 +22,24 @@ const TextEditor = () => {
 	);
 
 	return (
-		<div>
+		<div style={{
+			position: 'relative', 
+			margin: "auto",
+		}}>
+			<select
+				value={language}
+				style={{ float: 'right', position: 'relative' ,right: '00px' }}
+				onChange={e => setLanguage(e.target.value)}
+			>
+				<option value="js">JavaScript</option>
+				<option value="css">CSS</option>
+				<option value="html">HTML</option>
+				<option value="python">Python</option>
+				<option value="sql">SQL</option>
+				<option value="java">Java</option>
+				<option value="php">PHP</option>
+			</select>
+
 			<Editor
 				value={code}
 				onValueChange={code => setCode(code)}
@@ -36,19 +55,10 @@ const TextEditor = () => {
 				}}
 			>
 			</Editor>
-			<select
-				value={language}
-				style={{ float: 'right', position: 'relative' ,right: '00px' }}
-				onChange={e => setLanguage(e.target.value)}
-			>
-				<option value="js">JavaScript</option>
-				<option value="css">CSS</option>
-				<option value="html">HTML</option>
-				<option value="python">Python</option>
-				<option value="sql">SQL</option>
-				<option value="java">Java</option>
-				<option value="php">PHP</option>
-			</select>
+
+			<Button variant='contained' style={{position: 'relative'}}>
+				Submit
+			</Button>
 		</div>
 	);
 }
