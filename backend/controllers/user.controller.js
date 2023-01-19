@@ -11,8 +11,6 @@ exports.register = async (req, res) => {
 		return res.status(400).send({message: "Username or email already taken!"})
 	}
 
-	console.log(username, email, password)
-
 	//Kui pole saadetud mingeid vajalikke andmeid, hetkel ei t66ta
 	if(!username || !email || !password) {
 		res.send("Some fields were not filled in!")
