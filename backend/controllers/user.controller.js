@@ -43,7 +43,7 @@ exports.login = async(req, res) => {
 	}
 
 	const comparePasswords = await bcrypt.compare(password, user.password)
-	console.log(comparePasswords, user.password, password)
+
 	if (!comparePasswords) {
 		res.status(400).send("Incorrect user or password")
 		return
