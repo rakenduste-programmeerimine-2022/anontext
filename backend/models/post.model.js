@@ -9,6 +9,10 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	language: {
+		type: String,
+		required: true,
+	},
 	deleted: {
 		type: Boolean,
 		required: true
