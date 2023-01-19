@@ -13,6 +13,10 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	link: {
+		type: String,
+		required: true,
+	},
 	deleted: {
 		type: Boolean,
 		required: true
