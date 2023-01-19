@@ -36,14 +36,14 @@ exports.login = async(req, res) => {
 	const user = await User.findOne({username})
 
 	if (!user) {
-		res.status(400).send("Incorrect user or password")
+		res.status(400).send({message: "Incorrect user or password"})
 		return
 	}
 
 	const comparePasswords = await bcrypt.compare(password, user.password)
 
 	if (!comparePasswords) {
-		res.status(400).send("Incorrect user or password")
+		res.status(400).send({message: "Incorrect user or password"})
 		return
 	}
 
