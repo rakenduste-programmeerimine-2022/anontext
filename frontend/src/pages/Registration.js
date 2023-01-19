@@ -5,6 +5,8 @@ import Link from '@mui/material/Link';
 import React, {useState} from 'react';
 import axios from 'axios';
 
+document.body.style = 'background: #002D51;';
+
 const Registration = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")

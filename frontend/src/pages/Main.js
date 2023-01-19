@@ -6,9 +6,11 @@ import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import TextEditor from '../components/TextEditor.js';
-import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import EventNoteIcon from '@mui/icons-material/EventNote';
 import Settings from '../components/Settings.js';
 import { IconButton } from '@mui/material';
+
+document.body.style = 'background: #002D51;';
 
 const SearchBar = ({setSearchQuery}) => (
   <form>
@@ -33,7 +35,7 @@ const SearchBar = ({setSearchQuery}) => (
 export default function Mainpage() {
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <body style={{backgroundColor: '#002D51', height: '1000px',  }}
+    <body 
     >
       <div
         style={{
@@ -70,7 +72,7 @@ export default function Mainpage() {
               left: "100px" // Pole täiesti rahul aga las olla nii praegu
             }}
           > 
-          <Popup trigger={<Button style={{color: "darkgray",}} endIcon={<SettingsSuggestIcon />}>Settings</Button>} modal nested>
+          <Popup trigger={<Button variant='contained' color = "success" endIcon={<EventNoteIcon />}>Save note</Button>} modal nested>
             <Settings></Settings>
           </Popup>
           </div>

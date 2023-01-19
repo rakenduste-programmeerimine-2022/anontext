@@ -80,7 +80,7 @@ export default function Searchpage() {
           style={{
             display: "flex",
             alignItems: 'center',
-            justifyContent: "left",
+            justifyContent: "center",
             flexDirection: "row",
             padding: 10,
         }} 

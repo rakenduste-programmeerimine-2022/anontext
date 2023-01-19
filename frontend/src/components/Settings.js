@@ -17,6 +17,19 @@ export default function Settings() {
             padding: 3,
                       }}
             >
+                <Typography component="h1" sx={{ alignItems: 'center', display: 'flex', gap: 3 }}>
+                    <Button variant='contained' sx={{ mt: 0 }}>
+                        Generate link
+                    </Button>
+                    <TextField style={{backgroundColor: 'white', width: 300}}>
+                        
+                    </TextField>
+                </Typography>
+                <Box sx={{marginTop: 5}}>
+                    Siis kui registreeritud tuleb siia veel:
+                    <p></p>Mingi salvestuse nupp, private või public
+                    <p></p>Notes also go here lmao?
+                </Box>
             </Box>
     )
 }

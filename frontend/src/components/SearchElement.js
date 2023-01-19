@@ -3,52 +3,60 @@ import { Box } from '@mui/system';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import * as React from 'react';
+import { Slate, Editable, withReact} from 'slate-react';
+import { createEditor, Text, Editor, Transforms, Element as SlateElement, Descendant } from 'slate';
+import { useState, useCallback, useMemo} from "react";
+import { withHistory } from 'slate-history';
 
 export default function SearchElement() {
+    const editor = useMemo(() => withHistory(withReact(createEditor())), [])
+
     return (
-            <Box
-            sx={{
-            mx: 0,
-            marginRight: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            backgroundColor: 'lightblue',
-            padding: 3,
-                      }}
-            >
-            <Typography component="h1">
-                Username:
-                <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-                >
-                </TextField>
-            </Typography>
-            <Typography component="h1" sx={{ mt: 0 }}>
-                Password:
-                <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="password"
-                name="username"
-                autoComplete="username"
-                autoFocus
-                >
-                </TextField>
-            </Typography>
-            <Link href="/Registration">
-                No account? Click here to register
-            </Link>
-            <Button variant='contained' sx={{ mt: 2 }}>
-              Login
+        <Slate editor={editor} value={initialValue}>
+          <div
+            style={{
+              display: 'flex',
+              position: 'relative',
+              flexDirection: 'column',
+              margin: "auto",
+              gap: 20,
+             }}
+          >
+            <Button>
+                <Editable
+                readOnly
+                style={{
+                    backgroundColor: 'darkgray',
+                    marginTop: '10px',
+                    minHeight: '200px',
+                    maxHeight: '200px',
+                    maxWidth: '400px',
+                    minWidth: '400px',
+                }}
+                />
             </Button>
-            </Box>
+                <Editable
+                style={{
+                    backgroundColor: 'darkgray',
+                    marginTop: '10px',
+                    minHeight: '200px',
+                    maxHeight: '200px',
+                    maxWidth: '400px',
+                    minWidth: '400px',
+                }}
+                />
+          </div>
+            
+        </Slate>
     )
 }
+
+const initialValue = [
+    {
+        type: 'paragraph',
+        children: [{ text: '<h1>Tere Maailm</h1>' }],
+    },
+  ]
+
+
+  
