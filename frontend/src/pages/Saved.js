@@ -59,20 +59,9 @@ export default function Saved() {
               position: "relative",
             }}
           >
-          <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>
-            <Login></Login>
-          </Popup>
-            <div
-              style={{
-                display: "flex",
-                position: "relative",
-                left: "100px" // Pole täiesti rahul aga las olla nii praegu
-              }}
-            > 
-            <Popup trigger={<Button style={{color: "darkgray",}} endIcon={<SettingsSuggestIcon />}>Settings</Button>} modal nested>
-              <Settings></Settings>
-            </Popup>
-            </div>
+            <Button variant='contained' style={{left: 20}} href="/" >
+                Go back
+            </Button>
           </div>
         </div>
         <div

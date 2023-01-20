@@ -26,8 +26,9 @@ const SearchBar = ({setSearchQuery}) => (
 
 export default function Searchpage() {
     const [searchQuery, setSearchQuery] = useState("");
+    document.body.style = 'background: #002D51;';
     return (
-      <body style={{backgroundColor: '#002D51', height: '1000px',  }}
+      <body
       >
         <div
           style={{
