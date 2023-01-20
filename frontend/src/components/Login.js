@@ -39,6 +39,7 @@ const Login = () => {
 
             //salvestame kasutajanime ka
             localStorage.setItem("username", username)
+            window.location.reload(false);
         }
     }
 
