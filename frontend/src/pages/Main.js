@@ -74,23 +74,14 @@ const Mainpage = () => {
             position: "relative",
           }}
         >
-        {logged && <Typography>Hello, {username}</Typography>}
+        {logged && <Typography style={{position: "relative",color: "white", fontFamily: "Cursive", left: 25 }}>Hello, {username}
+        <Button variant='contained' style={{backgroundColor:"darkred",position: "relative", left: 15}}>Logout</Button>
+        </Typography>}
         {!logged &&
           <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>
             <Login></Login>
           </Popup>
         }
-          <div
-            style={{
-              display: "flex",
-              position: "relative",
-              left: "100px" // Pole täiesti rahul aga las olla nii praegu
-            }}
-          > 
-          <Popup trigger={<Button variant='contained' color = "success" endIcon={<EventNoteIcon />}>Save note</Button>} modal nested>
-            <Settings></Settings>
-          </Popup>
-          </div>
         </div>
       </div>
       <div
