@@ -58,7 +58,7 @@ exports.getUserPosts = async (req, res) => {
 		return
 	} 
 
-	Post.find({user: user}, function(err, posts) {
+	Post.find({author: user}, function(err, posts) {
 		return res.end(JSON.stringify(posts))
 	})
 }

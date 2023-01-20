@@ -100,7 +100,6 @@ export default function Saved() {
         }} 
         >
         {posts.map(post => <SearchElement content={post.content.substring(0, 100) + "..."} link={post.link} />)}
-        <SearchElement content="" />
         </div>
       </body>
     )

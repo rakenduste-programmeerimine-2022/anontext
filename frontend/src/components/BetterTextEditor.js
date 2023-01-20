@@ -57,7 +57,7 @@ const TextEditor = () => {
         }
 
         if (resp.status == 200) {
-            setLink("http://localhost:3000/" + respJson.link)
+            setLink("http://localhost:3000/post/" + respJson.link)
         }
     }
 
