@@ -6,6 +6,9 @@ import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import BetterTextEditor from '../components/BetterTextEditor.js';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import Settings from '../components/SettingsGuest.js';
+import { IconButton, Typography } from '@mui/material';
 
 document.body.style = 'background: #002D51;';
 
@@ -29,8 +32,20 @@ const SearchBar = ({setSearchQuery}) => (
   </form>
 );
 
-export default function Mainpage() {
+const Mainpage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+
+  //vaatame, kas kasutaja on sisse logitud
+  var logged = false
+
+  const username = window.localStorage.getItem("username");
+  const token = window.localStorage.getItem("token");
+  if (username && token) {
+    logged = true
+  }
+
+  let navbarElements
+
   return (
     <body 
     >
@@ -59,9 +74,23 @@ export default function Mainpage() {
             position: "relative",
           }}
         >
-        <Popup trigger={<Button style={{color: "white", left: 60}}>Login</Button>} modal nested>
-          <Login></Login>
-        </Popup>
+        {logged && <Typography>Hello, {username}</Typography>}
+        {!logged &&
+          <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>
+            <Login></Login>
+          </Popup>
+        }
+          <div
+            style={{
+              display: "flex",
+              position: "relative",
+              left: "100px" // Pole täiesti rahul aga las olla nii praegu
+            }}
+          > 
+          <Popup trigger={<Button variant='contained' color = "success" endIcon={<EventNoteIcon />}>Save note</Button>} modal nested>
+            <Settings></Settings>
+          </Popup>
+          </div>
         </div>
       </div>
       <div
@@ -78,3 +107,5 @@ export default function Mainpage() {
     </body>
   );
 }
+
+export default Mainpage

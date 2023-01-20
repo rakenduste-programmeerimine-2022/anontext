@@ -13,7 +13,7 @@ app.use(express.json())
 
 const cors = require('cors')
 app.use(cors({origin: '*'}))
-
+app.disable('etag');
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
 

@@ -50,12 +50,25 @@ exports.login = async(req, res) => {
 	//k6ik good, saame sisse logida
 
 	const token = jwt.sign(
-		{user_id: user.__id,},
+		{user_id: user.__id, username: user.username, email: user.email},
 		process.env.JWT_KEY,
 		{
 			expiresIn: "24h",
 		}
 	);
 
-	res.send(token);
+	res.send({message: "Successful login", token});
+}
+
+exports.getUser = async (req, res) => {
+	const authToken = req.get("Authorization")
+	console.log(authToken)
+
+	if (!authToken) {
+		return res.status(400).send({message: "Not logged in!"})
+	}
+	const { userid, username, email } = jwt.decode(authToken)
+	console.log(username)
+	res.status(200).send({username: username})
+
 }
