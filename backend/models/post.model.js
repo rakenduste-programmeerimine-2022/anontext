@@ -9,13 +9,24 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	language: {
+		type: String,
+		required: true,
+	},
+	public: {
+		type: Boolean,
+		required: true,
+	},
+	link: {
+		type: String,
+		required: true,
+	},
 	deleted: {
 		type: Boolean,
 		required: true
 	},
-	timestamps: true
 })
 
-const Post = mongoose.model("User", postSchema)
+const Post = mongoose.model("Post", postSchema)
 
 module.exports = Post;

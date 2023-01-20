@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
-import BetterTextEditor from '../components/BetterTextEditor.js';
+import DisplayCode from '../components/DisplayCode.js';
 import { Typography } from '@mui/material';
 
 document.body.style = 'background: #002D51;';
@@ -97,7 +97,7 @@ const Mainpage = () => {
           padding: 10,
       }} 
       >
-      <BetterTextEditor ></BetterTextEditor>
+      <DisplayCode ></DisplayCode>
       </div>
     </body>
   );
