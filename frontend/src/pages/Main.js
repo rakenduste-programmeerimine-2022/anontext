@@ -44,6 +44,12 @@ const Mainpage = () => {
     logged = true
   }
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    window.location.reload(false);
+    };
+
   let navbarElements
 
   return (
@@ -75,7 +81,7 @@ const Mainpage = () => {
           }}
         >
         {logged && <Typography style={{position: "relative",color: "white", fontFamily: "Cursive", left: 25 }}>Hello, {username}
-        <Button variant='contained' style={{backgroundColor:"darkred",position: "relative", left: 15}}>Logout</Button>
+        <Button onClick={logout} variant='contained' style={{backgroundColor:"darkred",position: "relative", left: 15}}>Logout</Button>
         </Typography>}
         {!logged &&
           <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>

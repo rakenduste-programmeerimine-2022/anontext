@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Editor from 'react-simple-code-editor';
 import Prism, { highlight, languages } from 'prismjs/components/prism-core';
-import { Button, TextField, FormControlLabel, Checkbox, Link } from '@mui/material';
+import { Button, TextField, FormControlLabel, Checkbox, Link, Typography } from '@mui/material';
 
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-python';
@@ -15,6 +15,15 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/themes/prism.css';
 
 const TextEditor = () => {
+
+	//vaatame, kas kasutaja on sisse logitud
+	var logged = false
+
+	const username = window.localStorage.getItem("username");
+	const token = window.localStorage.getItem("token");
+	if (username && token) {
+		logged = true
+	}
 
 	const [language, setLanguage] = useState("javascript")
 	const [code, setCode] = useState(
@@ -39,7 +48,6 @@ const TextEditor = () => {
 				<option value="java">Java</option>
 				<option value="php">PHP</option>
 			</select>
-
 			<Editor
 				value={code}
 				onValueChange={code => setCode(code)}
@@ -57,6 +65,7 @@ const TextEditor = () => {
 				}}
 			>
 			</Editor>
+			
 			<div style={{position: "relative", display: "flex", gap: 20, marginTop: 15,}}>
 				<Button variant='contained' style={{position: 'relative'}}>
 					Submit
@@ -65,17 +74,17 @@ const TextEditor = () => {
 
 				</TextField>
 				<div style={{backgroundColor: "lightblue", position: "relative", display: "flex", alignContent: "center", flexDirection: "row" }}>
-					<FormControlLabel control={<Checkbox />} label="Public" />
-            		<FormControlLabel control={<Checkbox />} label="Private" />
+				{logged &&	<FormControlLabel control={<Checkbox />} label="Public" /> }
+            	{logged &&	<FormControlLabel control={<Checkbox />} label="Private" /> }
 				</div>
-				<Button variant='contained' style={{display: 'flex', position: 'relative', alignItems: 'center'}}>
+				{logged && <Button variant='contained' style={{display: 'flex', position: 'relative', alignItems: 'center'}}>
                         Save Note
-            	</Button>
-				<Link style={{alignItems: "center", position: "relative", display: "flex"}} href='Saved'>
+            	</Button> }
+				{logged && <Link style={{alignItems: "center", position: "relative", display: "flex"}} href='Saved'> 
                 Look at saved notes
-                </Link>
+                </Link> }
 			</div>
-		</div>
+		</div> 
 	);
 }
 
