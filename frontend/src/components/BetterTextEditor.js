@@ -104,12 +104,10 @@ const TextEditor = () => {
 				<TextField defaultValue= "Link generated after submit" inputProps={{readOnly: true,}} style={{backgroundColor: 'white', width: 300}}>
 
 				</TextField>
-				<div style={{backgroundColor: "lightblue", position: "relative", display: "flex", alignContent: "center", flexDirection: "row" }}>
-            		<FormControlLabel control={<Checkbox onClick={() => setIsPublic(!isPublic)} />} label="Private" />
-				</div>
-				{logged && <Button variant='contained' style={{display: 'flex', position: 'relative', alignItems: 'center'}}>
-                        Save Note
-            	</Button> }
+
+				{logged &&	<div style={{color: "white", position: "relative", display: "flex", alignContent: "center", flexDirection: "row" }}>
+            		<FormControlLabel control={<Checkbox style={{color:"white"}} onClick={() => setIsPublic(!isPublic)} />} label="Private" />
+				</div>}
 				{logged && <Link style={{alignItems: "center", position: "relative", display: "flex"}} href='Saved'> 
                 Look at saved notes
                 </Link> }
