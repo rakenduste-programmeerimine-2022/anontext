@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import Editor from 'react-simple-code-editor';
 import Prism, { highlight, languages } from 'prismjs/components/prism-core';
-import { Button, TextField, FormControlLabel, Checkbox, Link, Typography } from '@mui/material';
-
+import { Button, TextField, FormControlLabel, Checkbox, Link } from '@mui/material';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-java';

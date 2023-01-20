@@ -6,9 +6,7 @@ import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import BetterTextEditor from '../components/BetterTextEditor.js';
-import EventNoteIcon from '@mui/icons-material/EventNote';
-import Settings from '../components/SettingsGuest.js';
-import { IconButton, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 document.body.style = 'background: #002D51;';
 

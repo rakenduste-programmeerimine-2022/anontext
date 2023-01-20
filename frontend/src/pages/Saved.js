@@ -1,13 +1,8 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
-import Login from '../components/Login.js';
-import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import SearchElement from '../components/SearchElement.js';
-import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
-import Settings from '../components/SettingsGuest.js';
 const SearchBar = ({setSearchQuery}) => (
     <form>
       <TextField

@@ -1,4 +1,4 @@
-import { Container, CssBaseline, TextField, Typography, Button } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 import * as React from 'react';
 
 export default function SearchElement(props) {
