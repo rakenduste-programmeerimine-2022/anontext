@@ -5,11 +5,7 @@ import TextField from "@mui/material/TextField";
 import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
 import '../components/Popup.css';
-import TextEditor from '../components/TextEditor.js';
 import BetterTextEditor from '../components/BetterTextEditor.js';
-import EventNoteIcon from '@mui/icons-material/EventNote';
-import Settings from '../components/SettingsGuest.js';
-import { IconButton } from '@mui/material';
 
 document.body.style = 'background: #002D51;';
 
@@ -63,20 +59,9 @@ export default function Mainpage() {
             position: "relative",
           }}
         >
-        <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>
+        <Popup trigger={<Button style={{color: "white", left: 60}}>Login</Button>} modal nested>
           <Login></Login>
         </Popup>
-          <div
-            style={{
-              display: "flex",
-              position: "relative",
-              left: "100px" // Pole täiesti rahul aga las olla nii praegu
-            }}
-          > 
-          <Popup trigger={<Button variant='contained' color = "success" endIcon={<EventNoteIcon />}>Save note</Button>} modal nested>
-            <Settings></Settings>
-          </Popup>
-          </div>
         </div>
       </div>
       <div

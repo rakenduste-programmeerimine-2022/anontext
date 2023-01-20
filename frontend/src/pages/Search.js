@@ -1,14 +1,8 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
-import Login from '../components/Login.js';
-import Popup from 'reactjs-popup';
 import '../components/Popup.css';
 import SearchElement from '../components/SearchElement.js';
-import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
-import Settings from '../components/SettingsGuest.js';
-import { IconButton } from '@mui/material';
 
 const SearchBar = ({setSearchQuery}) => (
     <form>
@@ -53,27 +47,6 @@ export default function Searchpage() {
             }}
           >
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              position: "relative",
-            }}
-          >
-          <Popup trigger={<Button style={{color: "darkgray",}}>Login</Button>} modal nested>
-            <Login></Login>
-          </Popup>
-            <div
-              style={{
-                display: "flex",
-                position: "relative",
-                left: "100px" // Pole täiesti rahul aga las olla nii praegu
-              }}
-            > 
-            <Popup trigger={<Button style={{color: "darkgray",}} endIcon={<SettingsSuggestIcon />}>Settings</Button>} modal nested>
-              <Settings></Settings>
-            </Popup>
-            </div>
           </div>
         </div>
         <div

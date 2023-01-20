@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Editor from 'react-simple-code-editor';
 import Prism, { highlight, languages } from 'prismjs/components/prism-core';
-import { Button } from '@mui/material';
+import { Button, TextField, FormControlLabel, Checkbox, Link } from '@mui/material';
 
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-python';
@@ -57,10 +57,24 @@ const TextEditor = () => {
 				}}
 			>
 			</Editor>
+			<div style={{position: "relative", display: "flex", gap: 20, marginTop: 15,}}>
+				<Button variant='contained' style={{position: 'relative'}}>
+					Submit
+				</Button>
+				<TextField defaultValue= "Link generated after submit" inputProps={{readOnly: true,}} style={{backgroundColor: 'white', width: 300}}>
 
-			<Button variant='contained' style={{position: 'relative'}}>
-				Submit
-			</Button>
+				</TextField>
+				<div style={{backgroundColor: "lightblue", position: "relative", display: "flex", alignContent: "center", flexDirection: "row" }}>
+					<FormControlLabel control={<Checkbox />} label="Public" />
+            		<FormControlLabel control={<Checkbox />} label="Private" />
+				</div>
+				<Button variant='contained' style={{display: 'flex', position: 'relative', alignItems: 'center'}}>
+                        Save Note
+            	</Button>
+				<Link style={{alignItems: "center", position: "relative", display: "flex"}} href='Saved'>
+                Look at saved notes
+                </Link>
+			</div>
 		</div>
 	);
 }
