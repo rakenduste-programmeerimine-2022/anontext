@@ -36,3 +36,36 @@ exports.createNewPost = async (req, res) => {
 	.catch(err => res.sendStatus(400).json('Error: ' + err));
 
 }
+
+exports.getUserPosts = async (req, res) => {
+	const authToken = req.get("Authorization")
+	if (!authToken) {
+		res.status(400).send({message: "You aren't logged in"})
+		return
+	}
+
+	const decodedToken = jwt.decode(authToken)
+	const username = decodedToken.username
+	if (!username) {
+		res.status(400).send({message: "This token isn't valid"})
+		return
+	}
+
+	const user = await User.findOne({username})
+
+	if (!user) {
+		res.status(400).send({message: "Something is REALLY wrong."})
+		return
+	} 
+
+	Post.find({user: user}, function(err, posts) {
+		return res.end(JSON.stringify(posts))
+	})
+}
+
+exports.getPost = async (req, res) => {
+	Post.findOne({link: req.params.postid}, function(err, post) {
+		console.log(JSON.stringify(post))
+		return res.end(JSON.stringify(post))
+	})
+}
