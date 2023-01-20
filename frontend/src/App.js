@@ -7,6 +7,7 @@ import NoPage from "./pages/Nopage";
 import Registered from "./pages/Registered";
 import Search from './pages/Search';
 import Saved from './pages/Saved';
+import ViewPost from './pages/ViewPost'
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/Registered" element={<Registered />} />
         <Route path="/Search" element={<Search />} />
         <Route path='/Saved' element={<Saved />} />
+        <Route path='/post/:postid' element={<ViewPost />} />
       </Routes>
     </BrowserRouter>
   );

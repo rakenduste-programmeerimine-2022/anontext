@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Login from '../components/Login.js';
 import Popup from 'reactjs-popup';
@@ -8,7 +8,6 @@ import '../components/Popup.css';
 import SearchElement from '../components/SearchElement.js';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 import Settings from '../components/SettingsGuest.js';
-
 const SearchBar = ({setSearchQuery}) => (
     <form>
       <TextField
@@ -31,6 +30,28 @@ const SearchBar = ({setSearchQuery}) => (
 
 export default function Saved() {
     const [searchQuery, setSearchQuery] = useState("");
+    const [posts, setPosts] = useState([])
+    const getAllPosts = async () => {
+
+      const resp = await fetch(
+        "http://localhost:8080/post/myposts", {
+            method: "GET",
+            headers: { "Content-Type": "application/json", "Authorization": window.localStorage.getItem("token") || ""},
+    })
+    
+      const respJson = await resp.json()
+
+      if (resp.status == 400) {
+          return
+      }
+
+      if (resp.status == 200) {
+        console.log(respJson)
+        setPosts(respJson)
+      }
+  }
+
+  const listAll = getAllPosts()
     return (
       <body style={{backgroundColor: '#002D51', height: '1000px',  }}
       >
@@ -59,9 +80,14 @@ export default function Saved() {
               position: "relative",
             }}
           >
-            <Button variant='contained' style={{left: 20}} href="/" >
-                Go back
-            </Button>
+            <div
+              style={{
+                display: "flex",
+                position: "relative",
+                left: "100px" // Pole täiesti rahul aga las olla nii praegu
+              }}
+            > 
+            </div>
           </div>
         </div>
         <div
@@ -69,11 +95,12 @@ export default function Saved() {
             display: "flex",
             alignItems: 'center',
             justifyContent: "center",
-            flexDirection: "row",
+            flexDirection: "column",
             padding: 10,
         }} 
         >
-        <SearchElement></SearchElement>
+        {posts.map(post => <SearchElement content={post.content.substring(0, 100) + "..."} link={post.link} />)}
+        <SearchElement content="" />
         </div>
       </body>
     )

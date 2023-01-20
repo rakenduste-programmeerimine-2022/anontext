@@ -31,6 +31,7 @@ const TextEditor = () => {
 		`function add(a, b) {\n  return a + b;\n}`
 	);
 
+	const [link, setLink] = useState("Link will be generated after submit!")
     const handleSubmit = async e => {
         //et leht ei refreshiks
         e.preventDefault();
@@ -56,7 +57,7 @@ const TextEditor = () => {
         }
 
         if (resp.status == 200) {
-            //setError("User registered!")
+            setLink("http://localhost:3000/" + respJson.link)
         }
     }
 
@@ -101,7 +102,7 @@ const TextEditor = () => {
 				<Button variant='contained' style={{position: 'relative'}} type="submit">
 					Submit
 				</Button>
-				<TextField defaultValue= "Link generated after submit" inputProps={{readOnly: true,}} style={{backgroundColor: 'white', width: 300}}>
+				<TextField value={link} inputProps={{readOnly: true,}} style={{backgroundColor: 'white', width: 300}}>
 
 				</TextField>
 
