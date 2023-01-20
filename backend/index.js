@@ -6,6 +6,7 @@ const PORT = 8080
 require('dotenv').config()
 
 const userRoutes = require('./routes/user.routes')
+const postRoutes = require('./routes/post.routes')
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
@@ -35,6 +36,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", userRoutes)
+app.use("/post/", postRoutes)
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.f7stczs.mongodb.net/?retryWrites=true&w=majority`
 

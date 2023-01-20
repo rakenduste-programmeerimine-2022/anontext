@@ -25,9 +25,8 @@ const postSchema = new mongoose.Schema({
 		type: Boolean,
 		required: true
 	},
-	timestamps: true
 })
 
-const Post = mongoose.model("User", postSchema)
+const Post = mongoose.model("Post", postSchema)
 
 module.exports = Post;

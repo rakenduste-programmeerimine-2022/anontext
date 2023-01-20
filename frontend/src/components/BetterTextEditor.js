@@ -16,16 +16,47 @@ import 'prismjs/themes/prism.css';
 
 const TextEditor = () => {
 
+	const [isPublic, setIsPublic] = useState(false)
 	const [language, setLanguage] = useState("javascript")
 	const [code, setCode] = useState(
 		`function add(a, b) {\n  return a + b;\n}`
 	);
+
+    const handleSubmit = async e => {
+        //et leht ei refreshiks
+        e.preventDefault();
+
+        //bruh ugly
+        var data = {
+            content: code,
+            language: language,
+            public: isPublic
+        }
+
+        const resp = await fetch(
+            "http://localhost:8080/post/new", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Authorization": window.localStorage.getItem("token") || ""},
+                body: JSON.stringify(data)
+        })
+        
+        const respJson = await resp.json()
+
+        if (resp.status == 400) {
+            //setError(respJson.message)
+        }
+
+        if (resp.status == 200) {
+            //setError("User registered!")
+        }
+    }
 
 	return (
 		<div style={{
 			position: 'relative', 
 			margin: "auto",
 		}}>
+			<form onSubmit={handleSubmit}>
 			<select
 				value={language}
 				style={{ float: 'right', position: 'relative' ,right: '00px' }}
@@ -58,15 +89,14 @@ const TextEditor = () => {
 			>
 			</Editor>
 			<div style={{position: "relative", display: "flex", gap: 20, marginTop: 15,}}>
-				<Button variant='contained' style={{position: 'relative'}}>
+				<Button variant='contained' style={{position: 'relative'}} type="submit">
 					Submit
 				</Button>
 				<TextField defaultValue= "Link generated after submit" inputProps={{readOnly: true,}} style={{backgroundColor: 'white', width: 300}}>
 
 				</TextField>
 				<div style={{backgroundColor: "lightblue", position: "relative", display: "flex", alignContent: "center", flexDirection: "row" }}>
-					<FormControlLabel control={<Checkbox />} label="Public" />
-            		<FormControlLabel control={<Checkbox />} label="Private" />
+            		<FormControlLabel control={<Checkbox onClick={() => setIsPublic(!isPublic)} />} label="Private" />
 				</div>
 				<Button variant='contained' style={{display: 'flex', position: 'relative', alignItems: 'center'}}>
                         Save Note
@@ -75,6 +105,7 @@ const TextEditor = () => {
                 Look at saved notes
                 </Link>
 			</div>
+			</form>
 		</div>
 	);
 }
